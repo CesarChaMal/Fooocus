@@ -1,0 +1,32 @@
+python -m pip install --upgrade pip
+pip install --upgrade pip setuptools
+
+pip install virtualenv
+
+-- virtualenv env
+python -m venv env
+
+-- windows
+env\Scripts\activate
+
+-- linux
+source env/bin/activate
+
+-- gitbash
+source env/scripts/activate
+
+pip install -r requirements.txt
+
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+
+pip install ipython  # For IPython
+pip install notebook # For Jupyter Notebook
+
+ipython
+
+import torch
+print(torch.cuda.is_available())
+
+./run
+
+deactivate
