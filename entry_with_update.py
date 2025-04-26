@@ -1,9 +1,11 @@
 import os
 import sys
 
+
 root = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(root)
 os.chdir(root)
+
 
 try:
     import pygit2
@@ -41,13 +43,4 @@ except Exception as e:
     print(str(e))
 
 print('Update succeeded.')
-
-from launch_original import *
-from webui import interface
-
-interface.queue(concurrency_count=1).launch(
-    server_name="0.0.0.0",
-    server_port=7871,
-    share=True,
-    debug=True
-)
+from launch import *

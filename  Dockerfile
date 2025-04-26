@@ -1,0 +1,35 @@
+FROM nvidia/cuda:12.4.0-runtime-ubuntu22.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.11 python3.11-venv python3-pip git wget curl libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a working directory
+WORKDIR /workspace/Fooocus
+
+# Clone the Fooocus repo
+RUN git clone https://github.com/CesarChaMal/Fooocus.git .
+
+# Set up Python environment
+RUN python3.11 -m venv env && \
+    . env/bin/activate && \
+    pip install --upgrade pip && \
+    pip install -r requirements_docker.txt
+
+# Copy updated entrypoints if needed
+COPY entrypoint.sh ./
+COPY entry_with_update.py ./
+
+# Expose Gradio default port
+EXPOSE 7860
+EXPOSE 7865
+EXPOSE 7870-7890
+
+# Run entrypoint
+ENTRYPOINT ["bash", "entrypoint.sh"]

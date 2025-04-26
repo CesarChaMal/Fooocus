@@ -3,9 +3,25 @@
 set -e
 
 # Variables
+REPO_URL="https://github.com/CesarChaMal/Fooocus.git"
+PROJECT_DIR="Fooocus"
 ENV_NAME="fooocus"
 
-# Setup Conda
+# Clone the repo if it doesn't exist
+if [ ! -d "$PROJECT_DIR" ]; then
+    echo "Cloning Fooocus repository..."
+    git clone "$REPO_URL" "$PROJECT_DIR"
+else
+    echo "Fooocus repository already exists. Pulling latest changes..."
+    cd "$PROJECT_DIR"
+    git pull --rebase origin main || true
+    cd ..
+fi
+
+# Enter the project directory
+cd "$PROJECT_DIR"
+
+# Setup Conda environment
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
 # Create environment if not exists

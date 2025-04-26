@@ -1,33 +1,26 @@
 #!/bin/bash
+# entrypoint.sh - Container entrypoint for Fooocus
 
-ORIGINALDIR=/content/app
-# Use predefined DATADIR if it is defined
-[[ x"${DATADIR}" == "x" ]] && DATADIR=/content/data
+set -e
 
-# Make persistent dir from original dir
-function mklink () {
-	mkdir -p $DATADIR/$1
-	ln -s $DATADIR/$1 $ORIGINALDIR
-}
+# Set working directories
+cd /content
 
-# Copy old files from import dir
-function import () {
-	(test -d /import/$1 && cd /import/$1 && cp -Rpn . $DATADIR/$1/)
-}
+# Prepare symbolic links
+if [ ! -L /content/app ]; then
+    ln -s /content/Fooocus /content/app
+fi
 
-cd $ORIGINALDIR
+if [ ! -L /content/app/models ]; then
+    mkdir -p /content/data/models
+    ln -s /content/data/models /content/app/models
+fi
 
-# models
-mklink models
-# Copy original files
-(cd $ORIGINALDIR/models.org && cp -Rpn . $ORIGINALDIR/models/)
-# Import old files
-import models
+if [ ! -L /content/app/outputs ]; then
+    mkdir -p /content/data/outputs
+    ln -s /content/data/outputs /content/app/outputs
+fi
 
-# outputs
-mklink outputs
-# Import old files
-import outputs
-
-# Start application
-python launch.py $*
+# Launch the main script
+cd /content/Fooocus
+python entry_with_update.py --share --always-high-vram

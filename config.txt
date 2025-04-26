@@ -1,0 +1,20 @@
+{
+    "path_checkpoints": [
+        "/mnt/f/IdeaProjects/Fooocus/models/checkpoints"
+    ],
+    "path_loras": [
+        "/mnt/f/IdeaProjects/Fooocus/models/loras"
+    ],
+    "path_embeddings": "/mnt/f/IdeaProjects/Fooocus/models/embeddings",
+    "path_vae_approx": "/mnt/f/IdeaProjects/Fooocus/models/vae_approx",
+    "path_vae": "/mnt/f/IdeaProjects/Fooocus/models/vae",
+    "path_upscale_models": "/mnt/f/IdeaProjects/Fooocus/models/upscale_models",
+    "path_inpaint": "/mnt/f/IdeaProjects/Fooocus/models/inpaint",
+    "path_controlnet": "/mnt/f/IdeaProjects/Fooocus/models/controlnet",
+    "path_clip_vision": "/mnt/f/IdeaProjects/Fooocus/models/clip_vision",
+    "path_fooocus_expansion": "/mnt/f/IdeaProjects/Fooocus/models/prompt_expansion/fooocus_expansion",
+    "path_wildcards": "/mnt/f/IdeaProjects/Fooocus/wildcards",
+    "path_safety_checker": "/mnt/f/IdeaProjects/Fooocus/models/safety_checker",
+    "path_sam": "/mnt/f/IdeaProjects/Fooocus/models/sam",
+    "path_outputs": "/mnt/f/IdeaProjects/Fooocus/outputs"
+}

@@ -150,14 +150,3 @@ config.update_files()
 init_cache(config.model_filenames, config.paths_checkpoints, config.lora_filenames, config.paths_loras)
 
 from webui import *
-
-from launch_original import *
-from webui import interface  # this must return a Gradio Interface object
-
-# Properly launch the Gradio app with queue, debugging, and share enabled
-interface.queue(concurrency_count=1).launch(
-    server_name="0.0.0.0",
-    server_port=7871,
-    share=True,
-    debug=True
-)
