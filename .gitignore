@@ -15,14 +15,13 @@ hash_cache.txt
 /cache
 /language/default.json
 /test_imgs
-config.txt
-config_modification_tutorial.txt
 user_path_config.txt
 user_path_config-deprecated.txt
 /modules/*.png
 /repositories
 /fooocus_env
 /venv
+/env
 /tmp
 /ui-config.json
 /outputs
@@ -53,3 +52,5 @@ user_path_config-deprecated.txt
 /.coverage*
 /auth.json
 .DS_Store
+/Fooocus
+/content
