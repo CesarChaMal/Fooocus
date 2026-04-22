@@ -24,4 +24,4 @@ pip install -r requirements_versions.txt
 
 # Launch Fooocus
 echo "Launching Fooocus with --share and --always-high-vram..."
-python entry_with_update.py --share --always-high-vram
+python entry_with_update.py --share --always-high-vram --port 7860
